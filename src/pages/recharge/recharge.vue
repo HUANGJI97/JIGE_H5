@@ -1,6 +1,12 @@
 <template>
-    <view class="bg-white" style="height: 100vh;">
-        <view class="bg-blue flex justify-between padding-xl padding-right-0" style="background-image: url(https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-recharge-head.png);background-size: cover;">
+    <view class="bg-white " style="height: 100vh;">
+        <view class="bg-blue  flex justify-between padding-xl padding-right-0" style="overflow:hidden;background-image: url(https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-recharge-head.png);background-size: cover;">
+            <view class="space bg-black">
+                <view class="star "></view>
+                <view class="star pink "></view>
+                <view class="star blue "></view>
+                <view class="star yellow "></view>
+            </view>
             <view>
                 <view class="text-sm">当前粮票</view>
                <view class="flex align-end">
@@ -100,6 +106,7 @@
 </script>
 
 <style scoped>
+    @import "star.css";
     .bg-cash-sm{
         background-image: url("../../static/cash_yellow.png");
         background-size: 100% 100%;
@@ -167,4 +174,7 @@
         background-color: rgb(248,246,231);
         color: var(--darkGray);
     }
+
+
+
 </style>
