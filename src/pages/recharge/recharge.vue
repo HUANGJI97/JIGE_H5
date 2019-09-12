@@ -24,7 +24,7 @@
         <view class="padding  margin-top">
             <view>请选择优惠套餐</view>
             <view class="flex justify-between  margin-sm margin-top-xl" v-for="(item,index) in recharge.list"  :key="index" >
-                <view :style="'background-image:url('+item2.bg+');background-size: cover;' + (item2.color ? 'border-color:'+ item2.color + ';' : '') " v-for="(item2,index) in item" :key="index" class="flex-sub border-3px bg-white-milk   padding-top-sm padding-bottom-sm  radius-xxxl margin-right money-item" hover-class="money-item-choose" @click="handleRecharge(item2)">
+                <view :style="'background-image:url('+item2.bg+');background-size: 100% 100%;' + (item2.color ? 'border-color:'+ item2.color + ';' : '') " v-for="(item2,index) in item" :key="index" class="flex-sub border-3px bg-white-milk   padding-top padding-bottom  radius-xxxl margin-right money-item" hover-class="money-item-choose" @click="handleRecharge(item2)">
                     <view class="flex justify-center align-end">
                         <view class="text-shadow text-money text-bold">{{item2.coin}}</view>
                         <view class="text-black text-md margin-bottom-xs margin-left-xs">粮票</view>
