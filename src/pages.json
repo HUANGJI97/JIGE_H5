@@ -1,0 +1,28 @@
+{
+	"pages": [
+		{"path": "pages/login/login"},
+		{"path": "pages/user/user",
+			"style":{
+				"navigationBarTitleText":"个人中心"
+			}
+		},
+		{"path": "pages/user/message"},
+		{"path": "pages/index/index"},
+		{"path": "pages/nmsl/nmsl"},
+		{"path": "pages/eleme/eleme"},
+		{"path": "pages/rankingList/rankingList"},
+		{"path": "pages/addCard/addCard"},
+		{"path": "pages/editCard/editCard"},
+		{"path": "pages/consumeRecord/consumeRecord"},
+		{"path": "pages/rechargeRecord/rechargeRecord"},
+		{"path": "pages/waitResult/waitResult"},
+		{"path": "pages/recharge/recharge"}
+	],
+	"globalStyle": {
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
