@@ -40,7 +40,7 @@
             <view class="flex justify-between bg-white padding radius margin-top align-center">
                 <view class="flex align-center">
                     <view class="text-center">
-                        <view class="text-xxl text-black text-bold">+18</view>
+                        <view class="text-xxl text-black text-bold">+{{config.ex_coin}}</view>
                         <view class="bg-cash-sm margin-top-xs" ></view>
                     </view>
                     <view class="margin-left">
@@ -48,7 +48,7 @@
                         <view class="text-sm text-gray" style="max-width: 350rpx;">每邀请1名好友,即可获得8张粮票奖励</view>
                         <view class="margin-top-xs flex">
                             <view class="cu-avatar-group">
-                                <view v-for="(item,index) in exinfo.list" class="cu-avatar round sm" :style="'background-image: url('+item.headimgurl+')'"></view>
+                                <view v-for="(item,index) in exinfo.list" :key="index" class="cu-avatar round sm" :style="'background-image: url('+item.headimgurl+')'"></view>
                             </view>
                             <view class="text-sm text-blue margin-top-xs" @click="handleToExRecord">
                                 已邀请{{exinfo.total}}人
@@ -86,7 +86,7 @@
             <view class="flex justify-between bg-white padding radius margin-top align-center">
                 <view class="flex align-center">
                     <view class="text-center">
-                        <view class="text-xxl text-black text-bold">+2</view>
+                        <view class="text-xxl text-black text-bold">+{{config.sign_coin}}</view>
                         <view class="bg-cash-sm margin-top-xs" ></view>
                     </view>
                     <view class="margin-left">
@@ -105,7 +105,7 @@
             <view class="flex justify-between bg-white padding radius margin-top align-center" >
                 <view class="flex align-center">
                     <view class="text-center">
-                        <view class="text-xl text-black text-bold">+20</view>
+                        <view class="text-xl text-black text-bold">+{{config.add_coin}}</view>
                         <view class="bg-cash-sm margin-top-xs" ></view>
                     </view>
                     <view class="margin-left">
@@ -156,7 +156,7 @@
     import {
         checkSignin,
         getExtensionCode,
-        getExtensionUser,
+        getExtensionUser, getMpConfig,
         getNotice,
         getUserInfo,
         Login,
@@ -168,6 +168,7 @@
         components: {Modal, Page},
         data(){
             return {
+                config:{},
                 modelKefu:false,
                 unreadNoticeCount:0,
                 modelEx:false,
@@ -211,7 +212,12 @@
                     try {
                         let { access_token,openid } = tokens;
                         this.userInfo  = await getUserInfo({access_token,token,openid});
-                        this.signInfo = await  checkSignin();
+                        let config = await getMpConfig();
+                        this.config= config;
+                        console.log(`调试:获取到系统配置`, config);
+
+
+                            this.signInfo = await  checkSignin();
                         console.log(`调试:获取到的签到信息`, this.signInfo);
 
                         this.exinfo = await  getExtensionUser({page:1,size:5});
@@ -300,7 +306,7 @@
 .header{
     width: 100%;
     height: 320rpx;
-    background-image: url("../../static/bg_head.png");
+    background-image: url("https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg_head.png");
     background-size: 100% 100%;
 }
     .bg-avatar{

@@ -2,7 +2,7 @@
     <view>
         <status v-if="!list.length" text="暂无消息"></status>
         <view class="margin">
-            <view v-for="(item,index) in list" class="flex bg-white margin-top-sm padding radius-xxl justify-between" @tap="handleShowDetaile(item)" >
+            <view v-for="(item,index) in list"  :key="index" class="flex bg-white margin-top-sm padding radius-xxl justify-between" @tap="handleShowDetaile(item)" >
                 <view class="flex ">
                     <view class="flex align-center">
                         <view class="cu-avatar round lg" style="background-image:url(../../static/notice_icon.png);">

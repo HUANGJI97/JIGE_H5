@@ -199,6 +199,14 @@ export async function signin(){
 }
 
 
+export async function getMpConfig(){
+    let result =  await request.get({
+        url:'/jige/system_config'
+    })
+    return  result.data
+}
+
+
 
 export async function getMobile({encryptedData,iv }) {
     // const login = await wxlogin();

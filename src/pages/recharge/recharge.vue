@@ -1,6 +1,6 @@
 <template>
     <view class="bg-white" style="height: 100vh;">
-        <view class="bg-blue flex justify-between padding-xl padding-right-0">
+        <view class="bg-blue flex justify-between padding-xl padding-right-0" style="background-image: url(https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-recharge-head.png);background-size: cover;">
             <view>
                 <view class="text-sm">当前粮票</view>
                <view class="flex align-end">
@@ -15,10 +15,10 @@
                 </view>
             </view>
         </view>
-        <view class="padding bg-white margin-top">
+        <view class="padding  margin-top">
             <view>请选择优惠套餐</view>
-            <view class="flex justify-between  margin-sm margin-top-xl" v-for="item in recharge.list"  >
-                <view :style="'background-image:url('+item2.bg+');background-size: cover;' + (item2.color ? 'border-color:'+ item2.color + ';' : '') " v-for="item2 in item" class="flex-sub border-3px  padding-top-sm padding-bottom-sm  radius-xxxl margin-right money-item" hover-class="money-item-choose" @click="handleRecharge(item2)">
+            <view class="flex justify-between  margin-sm margin-top-xl" v-for="(item,index) in recharge.list"  :key="index" >
+                <view :style="'background-image:url('+item2.bg+');background-size: cover;' + (item2.color ? 'border-color:'+ item2.color + ';' : '') " v-for="(item2,index) in item" :key="index" class="flex-sub border-3px bg-white-milk   padding-top-sm padding-bottom-sm  radius-xxxl margin-right money-item" hover-class="money-item-choose" @click="handleRecharge(item2)">
                     <view class="flex justify-center align-end">
                         <view class="text-shadow text-money text-bold">{{item2.coin}}</view>
                         <view class="text-black text-md margin-bottom-xs margin-left-xs">粮票</view>
@@ -27,7 +27,7 @@
                         <view class="left-tag">￥{{item2.pay_price}}</view>
                         <view class="right-tag" style="text-decoration: line-through;"> 原价:{{item2.price!== '' ? item2.price : pay_price + 1}}</view>
                     </view>
-                    <view class="my-badge">{{item2.name}}</view>
+                    <view class="my-badge " >{{item2.name}}</view>
                 </view>
 
 
@@ -65,6 +65,9 @@
         methods:{
            async handleBack(){
                uni.navigateBack(-1);
+               uni.reLaunch({
+                   url:'../user/user'
+               })
            },
             async handleRecharge(item){
               console.log(`调试:你选择了充值套餐`, item);
@@ -159,5 +162,9 @@
     }
     .money-item-choose{
         background: rgba(250, 209, 24, 0.2);
+    }
+    .bg-white-milk{
+        background-color: rgb(248,246,231);
+        color: var(--darkGray);
     }
 </style>

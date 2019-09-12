@@ -6,7 +6,7 @@ import './utils/ican-clipBoard'
 
 Vue.component('cu-custom',cuCustom);
 Vue.config.productionTip = false;
-Vue.prototype.ENV = "dev";
+Vue.prototype.ENV = "prod";
 
 App.mpType = 'app';
 
