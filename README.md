@@ -1,8 +1,24 @@
-# 本项目由uni-app框架编写
-## 运行
+# JIGE助手
+
+
+## 一、运行
 1.项目根目录下运行```npm install``` 安装项目依赖
 
-2.运行 ```npm run dev:mp-weixin``` 编译微信小程序代码
+2.运行 ```npm run dev:h5```
 
-3.打开微信开发者工具 选择导入项目 目录选择本项目根目录下 `/dist/dev/mp-weixin/`
-为小程序的根目录 
+
+## 二、关联项目
+### 1.后端仓库地址   [JIGE_NODE](https://e.coding.net/daneinei/JIGE_ELE/NODE.git)
+### 2.后台管理平台   [JIGE_ADMIN](https://e.coding.net/daneinei/JIGE_ELE/ADMIN.git)
+
+## 三、在线访问
+
+### 1.访问公众号
+![](https://surx.oss-cn-beijing.aliyuncs.com/17831589623289_.pic.jpg)
+
+### 2.直接访问个人中心（涉及微信授权，请使用微信扫码访问）
+![](https://surx.oss-cn-beijing.aliyuncs.com/357986097bccf40c4bebd19c7416a993.png)
+
+
+
+
