@@ -12,7 +12,28 @@ const ENV = Vue.prototype.ENV;
  * @param openid
  * @returns {Promise<*>}
  */
-export async function getUserInfo({access_token,token,openid}) {
+
+export async function getUserInfo() {
+    let result =   await  request.get({
+        url:'/jige/userinfo'
+    });
+    cache.set("userInfo",result.data);
+    return  result.data
+}
+
+export  async function  getGiftPackge() {
+    return  await request.get({
+        url:'/jige/dlb'
+    })
+}
+
+export  async function getLogDetaile({id}) {
+    return  await  request.get({
+        url:`/log/${id}/`
+    })
+}
+
+export async function buildAvatar(){
     let result =   await  request.get({
         url:'/jige/userinfo',
         data:{
@@ -141,8 +162,8 @@ export async function getAccessToken({code,token}) {
         return Promise.reject(error);
    });
     console.log(`调试:获取到的AccessToken信息`, result.data);
-    cache.set('X-Token',result.data.openid);
-    cache.set("tokens",result.data);
+    cache.set('X-Token',result.data);
+    // cache.set("tokens",result.data);
 
     return  result.data
 }
@@ -167,7 +188,7 @@ export async function Login({token,env=ENV}) {
     }).catch(({error})=>{
         console.log(`调试:出错`, error);
         if(error.code == 400){
-            window.location.href =window.location.protocol + "//" + window.location.host
+            // window.location.href =window.location.protocol + "//" + window.location.host
         }
 
     });

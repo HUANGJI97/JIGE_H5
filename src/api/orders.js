@@ -3,6 +3,9 @@ import {request} from "../utils/request";
 import {requestPayment} from "../utils/utils";
 import cache from "../utils/cache";
 
+
+
+
 export async function getRechargeList(){
     let result = await  request.get({
         url:"/jige/recharge",

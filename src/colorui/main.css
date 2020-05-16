@@ -1099,6 +1099,12 @@ button.icon.lg {
 	height: 40upx;
 	font-size: 0.5em;
 }
+.cu-avatar.x2s {
+	width: 30upx;
+	height: 30upx;
+	font-size: 0.5em;
+}
+
 
 .cu-avatar.lg {
 	width: 96upx;
@@ -3611,7 +3617,15 @@ scroll-view.cu-steps .cu-item {
 	background-color: var(--red);
 	color: var(--white);
 }
+.bg-gold{
+	background: #fff8ee;
+	color: #d3a55e;
+}
 
+.bg-china-red{
+	background-color: #d84830;
+	color: #feeabf;
+}
 .bg-orange {
 	background-color: var(--orange);
 	color: var(--white);
@@ -4044,6 +4058,11 @@ scroll-view.cu-steps .cu-item {
 .line-red,
 .lines-red {
 	color: var(--red);
+}
+
+
+.text-gold{
+	color:#fff8ee;
 }
 
 .text-orange,

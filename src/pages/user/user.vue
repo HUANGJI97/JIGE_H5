@@ -1,5 +1,6 @@
 <template>
 <page hide-title-bar=""  bg-color="#f2f7fa">
+    <CouponModel v-if="logid" :activi-data="logData" ></CouponModel>
     <view class="header flex justify-center ">
         <view class="flex justify-end  padding" style="position: fixed;top: 0; width: 100vw;">
             <view class="cuIcon cuIcon-rankfill text-white padding-xs" style="position: relative;font-size: 50rpx;" @tap="handleToRankingList">
@@ -27,7 +28,7 @@
                    </view>
                </view>
                 <view class=" flex align-center ">
-                    <button class="cu-btn bg-blue round" @click="handleToRecharge">
+                    <button class="cu-btn bg-china-red round" @click="handleToRecharge">
                         粮票充值
                     </button>
                 </view>
@@ -45,7 +46,7 @@
                     </view>
                     <view class="margin-left">
                         <view class="text-black text-md">邀请好友</view>
-                        <view class="text-sm text-gray" style="max-width: 350rpx;">每邀请1名好友,即可获得8张粮票奖励</view>
+                        <view class="text-sm text-gray" style="max-width: 350rpx;">每邀请1名好友,即可获得{{config.ex_coin}}张粮票奖励</view>
                         <view class="margin-top-xs flex">
                             <view class="cu-avatar-group">
                                 <view v-for="(item,index) in exinfo.list" :key="index" class="cu-avatar round sm" :style="'background-image: url('+item.headimgurl+')'"></view>
@@ -58,7 +59,7 @@
                     </view>
                 </view>
                 <view>
-                    <button class="cu-btn sm bg-blue round" @click="handleToEx">
+                    <button class="cu-btn sm bg-china-red round" @click="handleToEx">
                         去邀请
                     </button>
                 </view>
@@ -77,7 +78,7 @@
                     </view>
                 </view>
                 <view>
-                    <button class="cu-btn sm bg-blue round" @click="handleToRankingList" >
+                    <button class="cu-btn sm bg-china-red    round" @click="handleToRankingList" >
                         去打榜
                     </button>
                 </view>
@@ -90,12 +91,12 @@
                         <view class="bg-cash-sm margin-top-xs" ></view>
                     </view>
                     <view class="margin-left">
-                        <view class="text-black text-md">每日签到</view>
+                        <view class="text-black  text-md">每日签到</view>
                         <view class="text-sm text-gray" style="max-width: 350rpx;">每日签到，每日签到可获取2粮票</view>
                     </view>
                 </view>
                 <view>
-                    <button class="cu-btn sm bg-blue round" :disabled="signInfo.signed" @click="handleSign">
+                    <button class="cu-btn sm bg-china-red round" :disabled="signInfo.signed" @click="handleSign">
                         {{signInfo.signed?'已签到':'去签到'}}
                     </button>
                 </view>
@@ -110,11 +111,11 @@
                     </view>
                     <view class="margin-left">
                         <view class="text-black text-md">添加客服微信</view>
-                        <view class="text-sm text-gray" style="max-width: 350rpx;">添加客服为好友,可额外获得20枚粮票奖励</view>
+                        <view class="text-sm text-gray" style="max-width: 350rpx;">添加客服为好友,可额外获得{{config.add_coin}}枚粮票奖励</view>
                     </view>
                 </view>
                 <view>
-                    <button :disabled="userInfo.added" class="cu-btn sm bg-blue round" @click="modelKefu = true">
+                    <button :disabled="userInfo.added" class="cu-btn sm bg-china-red round" @click="modelKefu = true">
                         {{userInfo.added?'已完成':'去完成'}}
                     </button>
                 </view>
@@ -156,22 +157,25 @@
     import {
         checkSignin,
         getExtensionCode,
-        getExtensionUser, getMpConfig,
+        getExtensionUser, getLogDetaile, getMpConfig,
         getNotice,
         getUserInfo,
         Login,
         signin
     } from "../../api/user";
     import cache from "../../utils/cache";
+    import CouponModel from "../component/CouponModal";
     export default {
         name: "user",
-        components: {Modal, Page},
+        components: {CouponModel, Modal, Page},
         data(){
             return {
                 config:{},
                 modelKefu:false,
+                logData:[],
                 unreadNoticeCount:0,
                 modelEx:false,
+                logid:undefined,
                 exinfo:{},
                 userInfo:{},
                 exCode:null,
@@ -182,8 +186,13 @@
         },
 
        async onLoad(options){
-           console.log(`调试:获取到token`, options);
+           console.log(`调试:获取到options`, options);
+
             this.loadData();
+           this.logid=options.logid;
+           let logDetaile = await getLogDetaile({id:this.logid});
+           this.logData = logDetaile.data.sn;
+           console.log(`调试:当前 logid`,this.logData )
 
 
 
@@ -197,7 +206,7 @@
                 console.log(`调试:触发刷新`,);
                 cache.del('exCode');
                 uni.showLoading({title:'获取中'});
-                await this.handleToEx()
+                await this.handleToEx();
                 uni.showToast({title:'刷新成功'});
             },
             async loadData(){
@@ -205,7 +214,7 @@
                 // cache.set("token",token);
                 uni.showLoading({
                     title:'loading',
-                })
+                });
                 let tokens = cache.get("tokens");
                 let xToken = cache.get("X-Token");
                 if(xToken){
@@ -307,6 +316,9 @@
     width: 100%;
     height: 320rpx;
     background-image: url("https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg_head.png");
+    background-image: url("https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-head-night2.png");
+    background-image: url("https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-head_1001.png");
+    background-image: url("https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-head_1001_6.png");
     background-size: 100% 100%;
 }
     .bg-avatar{
@@ -321,7 +333,23 @@
         border-radius: 10px;
 
     }
-    .bg-cash{
+    .bg-night{
+        background-image: url("https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-btn-night.png");
+        background-size: 100% 100%;
+        color: white;
+    }
+    .bg-china-red{
+        background-color: #d84830;
+        color: #fff9f1;
+    }
+    .bg-night[disabled]{
+        color: white !important;
+
+
+    }
+
+
+.bg-cash{
         background-image: url("../../static/cash_yellow.png");
         background-size: 100% 100%;
         width: 80rpx;

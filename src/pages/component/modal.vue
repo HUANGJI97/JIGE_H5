@@ -1,14 +1,14 @@
 <template>
     <view class="cu-modal" :class="show?'show':''" >
         <view class="cu-dialog" :style="{backgroundColor:bgColor === 'none'?`rgba(0,0,0,0)`:''}">
-            <view class="drawer-modal-button flex justify-end" v-if="showExternalCloseButton"  >
+            <view class="drawer-modal-button flex justify-end bg-red" v-if="showExternalCloseButton"  >
                 <view class="cuIcon-refresh text-white text-xl margin-right " @click="handleRefresh"></view>
                 <view class="cuIcon-close text-white text-xl margin-right " @click="hideModal"></view>
             </view>
             <view :class="`cu-bar ${bgColor === `none`? ``:bgColor} justify-end`" v-if="!hideHeader">
                 <view class='content'>{{title}}</view>
                 <view class='action' @click='hideModal'>
-                    <text class='cuIcon-close text-red'></text>
+                    <text class='cuIcon-close text-white'></text>
                 </view>
             </view>
             <view :class='`padding-xl ${bgColor ===`none` ? ``:bgColor}`'>
@@ -91,5 +91,8 @@
 </script>
 
 <style scoped>
-
+.drawer-modal-button{
+    /*position: absolute;*/
+    /*top: -10px;*/
+}
 </style>

@@ -1,10 +1,11 @@
 <template>
-    <view class="cu-page text-sm">
-        <cu-custom bg-color="#387AFF" title-color="white"  :isBack="pagecount> 1" v-if="CUR_MP==='mp-weixin'">
+    <view class="cu-page text-df">
+        <cu-custom :bg-color="titleBarColor || 'bg-theme-blue'" title-color=""  :isBack="pagecount> 1" v-if="CUR_MP==='mp-weixin' && !hideTitleBar">
             <block slot="content">{{title ||tabbarOptions.pages[tabbarOptions.index].title}}</block>
         </cu-custom>
-        <view class="page-content " :style="{height:'calc(100vh - ' + CustomBar + 'px)',backgroundColor:bgColor || ''}">
+        <view class="page-content  " :style="{height:'calc(100vh - ' + (CUR_MP==='mp-alipay'? 0 :  CustomBar - StatusBar)  + 'px)',backgroundColor:bgColor || ''}">
             <slot></slot>
+            <view class="padding-xl"></view>
         </view>
         <view v-if="showTabbar" class="footer">
             <view class="cu-bar tabbar  " style="background:#F7F7FA;">
@@ -19,8 +20,7 @@
                     <button v-if="item.type==='button'" class='cu-btn bg-blue shadow'
                             :class="item.loadding ? 'cuIcon-loading animation-rotate' : item.icon"
                             @tap="handleTabbarActionTap(item)"></button>
-                    <view v-else :class='"cuIcon-"+item.icon' :data-key="item.key" :data-index="index"
-                    ></view>
+                    <view v-else :class='"cuIcon-"+item.icon' :data-key="item.key" :data-index="index" ></view>
                     {{item.title}}
                 </view>
             </view>
@@ -35,6 +35,7 @@
             return {
                 StatusBar: this.StatusBar,
                 CustomBar: this.CustomBar,
+
                 CUR_MP:this.CUR_MP,
                 tabbarOptions: {},
                 stack: [],
@@ -103,6 +104,14 @@
             title: {
                 type: String,
                 default: ''
+            },
+            titleBarColor:{
+                type: String,
+                default: undefined
+            },
+            hideTitleBar:{
+                type:Boolean,
+                default:false
             },
             isBack: {
                 type: Boolean,

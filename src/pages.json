@@ -16,7 +16,12 @@
 		{"path": "pages/consumeRecord/consumeRecord"},
 		{"path": "pages/rechargeRecord/rechargeRecord"},
 		{"path": "pages/waitResult/waitResult"},
-		{"path": "pages/recharge/recharge"}
+		{"path": "pages/recharge/recharge"},
+		{"path": "pages/index/admin"},
+		{"path": "pages/admin/user"},
+		{"path": "pages/admin/orders"},
+		{"path": "pages/user/avatarBuild"},
+		{"path": "pages/admin/log"}
 	],
 	"globalStyle": {
 		"navigationStyle": "custom",

@@ -1,6 +1,6 @@
 <template>
     <view class="bg-white " style="height: 100vh;">
-        <view class="bg-blue  flex justify-between padding-xl padding-right-0" style="overflow:hidden;background-image: url(https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-recharge-head.png);background-size: cover;">
+        <view class="bg-blue  flex justify-between padding-xl padding-right-0" style="overflow:hidden;background-image: url(https://lft-ad.oss-cn-hangzhou.aliyuncs.com/eleme/png/bg-recharge-head_1001_2.png);background-size: 100% 100%;">
             <view class="space bg-black">
                 <view class="star "></view>
                 <view class="star pink "></view>
@@ -15,7 +15,7 @@
                </view>
             </view>
             <view class="flex align-center">
-                <view class="bg-white  padding-xs text-sm" style="border-top-left-radius: 30px;border-bottom-left-radius: 30px;" @click="handleBack" >
+                <view class="bg-white text-red  padding-xs text-sm" style="border-top-left-radius: 30px;border-bottom-left-radius: 30px;" @click="handleBack" >
                     <text class="cuIcon-back margin-right-xs margin-left-xs" style="" ></text>
                     返回首页
                 </view>
@@ -24,16 +24,16 @@
         <view class="padding  margin-top">
             <view>请选择优惠套餐</view>
             <view class="flex justify-between  margin-sm margin-top-xl" v-for="(item,index) in recharge.list"  :key="index" >
-                <view :style="'background-image:url('+item2.bg+');background-size: 100% 100%;' + (item2.color ? 'border-color:'+ item2.color + ';' : '') " v-for="(item2,index) in item" :key="index" class="flex-sub border-3px bg-white-milk   padding-top padding-bottom  radius-xxxl margin-right money-item" hover-class="money-item-choose" @click="handleRecharge(item2)">
+                <view :style="'background-image:url('+item2.bg+');background-size: 100% 100%;' + (item2.color ? 'border-color:'+ item2.color + ';' : '') " v-for="(item2,index) in item" :key="index" class="flex-sub border-3px bg-gold   padding-top padding-bottom  radius-xxxl margin-right money-item" hover-class="money-item-choose" @click="handleRecharge(item2)">
                     <view class="flex justify-center align-end">
-                        <view class="text-shadow text-money text-bold">{{item2.coin}}</view>
-                        <view class="text-black text-md margin-bottom-xs margin-left-xs">粮票</view>
+                        <view class="text-shadow text-money  text-red text-bold">{{item2.coin}}</view>
+                        <view class="text-red text-md margin-bottom-xs margin-left-xs">粮票</view>
                     </view>
                     <view class="flex justify-center margin-top-xs">
-                        <view class="left-tag">￥{{item2.pay_price}}</view>
-                        <view class="right-tag" style="text-decoration: line-through;"> 原价:{{item2.price!== '' ? item2.price : pay_price + 1}}</view>
+                        <view class="left-tag bg-china-red">￥{{item2.pay_price}}</view>
+                        <view class="right-tag bg-china-red" style="text-decoration: line-through;"> 原价:{{item2.price!== '' ? item2.price : pay_price + 1}}</view>
                     </view>
-                    <view class="my-badge " >{{item2.name}}</view>
+                    <view class="my-badge bg-china-red " >{{item2.name}}</view>
                 </view>
 
 
@@ -118,12 +118,11 @@
         text-shadow: 2px 2px 1px #80808059;
     }
     .text-money{
-        color: #483000;
         font-size:60rpx;
     }
     .left-tag{
-        background:#f8b500;
-        color: #916200;
+        /*background:#fff8ee;*/
+        /*color: #d3a55e;*/
         font-size: 10px;
         padding: 5rpx;
 
@@ -135,8 +134,8 @@
         margin-right:3rpx;
     }
     .right-tag{
-        background: #f8b500;
-        color: #916200;
+        /*background: #fff8ee;*/
+        /*color: #d3a55e;*/
         font-size: 10px;
         padding: 5rpx;
         border-top-right-radius: 30px;
@@ -150,14 +149,14 @@
         width: 160rpx;
     }
     .border-3px{
-        border:2px solid #f7a600;
+        border:2px solid #c22b14;
     }
     .money-item{
         position: relative;
         overflow: hidden;
     }
     .my-badge{
-        background: #f8b500;
+        /*background: #d84830;*/
         padding-left: 15px;
         padding-right: 10px;
         color: white;

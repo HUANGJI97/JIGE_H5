@@ -25,20 +25,23 @@
 
 
             console.log(`调试:获取缓存`, tokens);
+            let redirect = cache.get('redirect') ||'../user/user';
 
             if(cache.get("X-Token")){
                 if(token){
                     cache.set("token",token);
                 }
+                console.log(`调试:页面跳转`, redirect);
                 uni.reLaunch({
-                    url:'../user/user'
+                    url:redirect
                 });
                 return 0;
             }else if(code){
                 let res = await getAccessToken({code,token:state});
                 cache.set("token",state);
+                console.log(`调试:页面跳转`, redirect);
                 uni.reLaunch({
-                    url:'../user/user'
+                    url:redirect
                 });
                 console.log(`调试:获取`, res);
                 return 0;
