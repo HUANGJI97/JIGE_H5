@@ -16,7 +16,7 @@
 ### 1.访问公众号
 ![](https://surx.oss-cn-beijing.aliyuncs.com/17831589623289_.pic.jpg)
 
-### 2.直接访问个人中心（涉及微信授权，请使用微信扫码访问）
+### 2.直接访问个人中心（涉及微信授权，请使用微信扫码访问） 
 ![](https://surx.oss-cn-beijing.aliyuncs.com/357986097bccf40c4bebd19c7416a993.png)
 
 
